@@ -40,7 +40,7 @@ app.post('/todos', function(req,res) {
 })
 
 app.delete('/todos/:id', function(req,res) {
-    var todoId = req.params.id;
+    var todoId = parseInt(req.params.id, 10);
 	var matchedTodo = _.findWhere(todos, {id: todoId});
 	if(!matchedTodo) {
 		res.status(404).json({"error": "NO matched todo"});
