@@ -34,10 +34,20 @@ app.post('/todos', function(req,res) {
   	return res.status(404).send();
   }
   body.id = todoNextId++;
-  body.ok = 'new';
   todos.push(body);
   res.json(body);
 
+})
+
+app.delete('/todos/:id', function(req,res) {
+    var todoId = req.params.id;
+	var matchedTodo = _.findWhere(todos, {id: todoId});
+	if(!matchedTodo) {
+		res.status(404).json({"error": "NO matched todo"});
+	} else {
+		todos = _.without(todos,matchedTodo);
+		res.json(matchedTodo);
+	}
 })
 
 
