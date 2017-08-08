@@ -34,6 +34,7 @@ app.post('/todos', function(req,res) {
   	return res.status(404).send();
   }
   body.id = todoNextId++;
+  body.ok = 'new';
   todos.push(body);
   res.json(body);
 
