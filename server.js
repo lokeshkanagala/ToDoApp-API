@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var _ = require('underscore');
 var db = require('./db.js');
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.RDS_PORT || 3000;
 var todos = [];
 var todoNextId = 1;
 
